@@ -26,7 +26,8 @@
       "generator": "secret"
     },
     "ALLOWED_HOSTS": {
-      "value": ".herokuapp.com"
+      "value": ".herokuapp.com",
+      "value": "email-campain.herokuapp.com"
     },
     "COLOSSUS_HTTPS_ONLY": {
       "value": "True"
