@@ -45,6 +45,10 @@
           {% trans 'Templates' %}
           {% if menu == 'templates' %}<span class="sr-only">{% trans '(current)' %}</span>{% endif %}
         </a>
+        <a class="nav-item nav-link{% if menu == 'emails' %} active{% endif %}" href="/emails/get-email">
+          {% trans 'Configure Emails' %}
+        {% if menu == 'emails' %}<span class="sr-only">{% trans '(current)' %}</span>{% endif %}
+        </a>
       </div>
       <ul class="navbar-nav">
         <li class="nav-item">

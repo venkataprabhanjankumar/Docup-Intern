@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'colossus.apps.lists',
     'colossus.apps.notifications',
     'colossus.apps.subscribers',
+    'colossus.apps.emails',
 ]
 
 SITE_ID = 1
