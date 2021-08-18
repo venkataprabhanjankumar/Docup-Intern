@@ -7,12 +7,16 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
   <link rel="mask-icon" href="{% static 'img/icon.svg' %}" color="#212529">
-  <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap-4.2.1/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free-5.1.0-web/css/all.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'vendor/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!--<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap-4.2.1/css/bootstrap.min.css' %}">-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  <!--<link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free-5.1.0-web/css/all.css' %}">-->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.css">
+  <!--<link rel="stylesheet" type="text/css" href="{% static 'vendor/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}">-->
   <link href="https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'notifications/css/notifications.css' %}">
+
   <title>{% block title %}Docup{% endblock %}</title>
   {% block stylesheet %}
   {% endblock %}
@@ -99,13 +103,19 @@
   {% endblock main %}
 {% endblock body %}
 <div id="notificationsContainer"></div>
-<script src="{% static 'vendor/jquery-3.3.1.min.js' %}"></script>
-<script src="{% static 'vendor/popper.js-1.14.6/umd/popper.min.js' %}"></script>
-<script src="{% static 'vendor/bootstrap-4.2.1/js/bootstrap.min.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--<script src="{% static 'vendor/jquery-3.3.1.min.js' %}"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+<!--<script src="{% static 'vendor/popper.js-1.14.6/umd/popper.min.js' %}"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!--<script src="{% static 'vendor/bootstrap-4.2.1/js/bootstrap.min.js' %}"></script>-->
 <script src="{% static 'notifications/js/notifications.js' %}"></script>
-<script src="{% static 'vendor/feather-icons-4.7.3/feather.min.js' %}"></script>
-<script src="{% static 'vendor/moment/moment.min.js' %}"></script>
-<script src="{% static 'vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+<!--<script src="{% static 'vendor/feather-icons-4.7.3/feather.min.js' %}"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<!--<script src="{% static 'vendor/moment/moment.min.js' %}"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"></script>
+<!--<script src="{% static 'vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>-->
 <script>
   $(function () {
     feather.replace();
