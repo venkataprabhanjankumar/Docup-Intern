@@ -12,4 +12,5 @@ class EmailForms(forms.Form):
     email_default_text = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Default Text'}))
 
 
-
+class PhoneBookForm(forms.Form):
+    email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder': 'Email'}))

@@ -20,3 +20,14 @@ class EmailUsers(models.Model):
 
     class Meta:
         db_table = "EmailUsers"
+
+
+class PhoneBook(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    email = models.EmailField(max_length=225)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        db_table = "PhoneBook"

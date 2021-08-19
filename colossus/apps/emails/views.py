@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from decouple import config
+from django.db.models import Q
 import os
 
-from .forms import EmailForms
-from .models import EmailUsers
+from .forms import EmailForms, PhoneBookForm
+from .models import EmailUsers, PhoneBook
 
 
 @login_required
@@ -75,3 +76,85 @@ def get_email_details(request):
                 'form': email_form
             }
         )
+
+
+@login_required
+def get_phonebook(request):
+    if request.method == 'POST':
+        form = PhoneBookForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            email = form.cleaned_data['email']
+            print(user)
+            print(email)
+            check_phone_book = PhoneBook.objects.filter(Q(user=user) & Q(email=email))
+            print(check_phone_book.count())
+            phonebook_details = PhoneBook.objects.filter(user=request.user)
+            if check_phone_book.count() > 0:
+                return render(
+                    request,
+                    'emails/phonebook_setup.html',
+                    {
+                        'menu': 'phonebook',
+                        'fail': 'Email Already Added',
+                        'form': form,
+                        'phonebook_details': phonebook_details
+                    }
+                )
+            phonebook = PhoneBook.objects.create(
+                user=user,
+                email=email
+            )
+            phonebook.save()
+            print(phonebook_details.count())
+            if phonebook_details.count() > 0:
+                for detail in phonebook_details:
+                    print(detail.email)
+                return render(
+                    request,
+                    'emails/phonebook_setup.html',
+                    {
+                        'menu': 'phonebook',
+                        'success': 'Email Added',
+                        'form': form,
+                        'phonebook_details': phonebook_details
+                    }
+                )
+            else:
+                return render(
+                    request,
+                    'emails/phonebook_setup.html',
+                    {
+                        'menu': 'phonebook',
+                        'form': form,
+                        'no_data': "Currently You Don't have any Emails"
+                    }
+                )
+
+    else:
+        phonebook_form = PhoneBookForm()
+        phonebook_details = PhoneBook.objects.filter(user=request.user)
+        print(phonebook_details)
+        print(phonebook_details.count())
+        if phonebook_details.count() > 0:
+            for detail in phonebook_details:
+                print(detail.email)
+            return render(
+                request,
+                'emails/phonebook_setup.html',
+                {
+                    'menu': 'phonebook',
+                    'form': phonebook_form,
+                    'phonebook_details': phonebook_details
+                }
+            )
+        else:
+            return render(
+                request,
+                'emails/phonebook_setup.html',
+                {
+                    'menu': 'phonebook',
+                    'form': phonebook_form,
+                    'no_data': "Currently You Don't have any Emails",
+                }
+            )
