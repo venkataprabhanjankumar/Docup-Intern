@@ -13,6 +13,7 @@ class EmailUsers(models.Model):
     email_port = models.CharField(max_length=225)
     email_server = models.CharField(max_length=225)
     email_backend = models.CharField(max_length=225)
+    email_default_text = models.TextField()
 
     def __str__(self):
         return self.user
