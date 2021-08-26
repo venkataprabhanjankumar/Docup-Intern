@@ -85,11 +85,11 @@ def get_phonebook(request):
         if form.is_valid():
             user = request.user
             email = form.cleaned_data['email']
-            print(user)
-            print(email)
+
             check_phone_book = PhoneBook.objects.filter(Q(user=user) & Q(email=email))
             print(check_phone_book.count())
             phonebook_details = PhoneBook.objects.filter(user=request.user)
+            form = PhoneBookForm()
             if check_phone_book.count() > 0:
                 return render(
                     request,

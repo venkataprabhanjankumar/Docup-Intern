@@ -73,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'colossus.apps.accounts.middleware.UserTimezoneMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 
@@ -134,6 +135,8 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'colossus/static'),
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # ==============================================================================
